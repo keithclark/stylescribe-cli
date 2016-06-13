@@ -1,0 +1,19 @@
+{
+  "name": "stylescribe-cli",
+  "version": "1.0.0",
+  "description": "CLI for Stylescribe",
+  "main": "index.js",
+  "bin": {
+    "stylescribe": "bin/stylescribe.js"
+  },
+  "author": "Keith Clark",
+  "license": "MIT",
+  "dependencies": {
+    "stylescribe": "keithclark/stylescribe.git",
+    "optimist": "^0.6.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/keithclark/stylescribe-cli.git"
+  }
+}

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Styleguide</title>
+<style>{{{css}}}</style>
+<style>
+
+.styleguide {
+  font: 100%/1.5 Arial;
+  margin: 0 0 0 20em;
+  padding: 2em;
+}
+
+
+/* nav bar
+------------------------- */
+.styleguide-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 16em;
+  overflow: auto;
+  background: #655;
+  padding: 2em;
+}
+.styleguide-nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.styleguide-nav li {
+    padding: .25em 0;
+    display: block;
+}
+.styleguide-nav a {
+    color: #fff;
+}
+.styleguide-nav a:not(:hover) {
+    text-decoration: none;
+}
+
+
+/* headings
+------------------------- */
+.styleguide-title {
+  font-size: 350%;
+  line-height: 1.2;
+  margin: 0 0 0.75em 0;
+}
+.styleguide-heading {
+  font-weight: normal;
+  font-size: 300%;
+  color: #888;
+  margin: 3em 0 0.75em 0;
+}
+.styleguide-subheading {
+  font-size: 125%;
+  margin: 1.5em 0 1.5em 0;
+}
+.styleguide-subsubheading {
+  font-size: 100%;
+  margin: 1.5em 0 .5em 0;
+  color: #888;
+}
+
+
+/* code
+------------------------- */
+.styleguide-code {
+  font: .8rem / 1.5 Menlo;
+  white-space: pre;
+  background: #eee;
+  padding: 0.25em;
+  border-radius: 2px;
+  color: #444;
+  box-shadow: 0 0 0 1px #ddd;
+}
+.styleguide-code code {
+  font: inherit;
+}
+
+
+/* tables
+------------------------- */
+.styleguide-table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+.styleguide-table th {
+  text-align: left;
+  padding: 0.25em 0;
+  color: #888;
+}
+.styleguide-table td {
+  border-top: 1px solid #ddd;
+  padding: 0.25em 0;
+}
+.styleguide-table td:first-child:nth-last-child(2) {
+  width: 25%;
+}
+
+
+/* examples
+------------------------- */
+.styleguide-example {
+  display: flex;
+  margin-left: -2em;
+}
+.styleguide-example > * {
+  box-shadow: 0 0 0 1px #ddd;
+  margin: 0 0 0 2em;
+  padding: 1em;
+  border-radius: 2px
+}
+.styleguide-example__code {
+  flex: 0.6;
+  order: 1;
+  overflow: auto;
+}
+.styleguide-example__preview {
+  flex: 0.4;
+  background-image: linear-gradient(45deg, #eee 25%, transparent 25%, transparent 75%, #eee 75%, #eee 100%),
+                    linear-gradient(45deg, #eee 25%, transparent 25%, transparent 75%, #eee 75%, #eee 100%);
+  background-size: 16px 16px;
+  background-position: 0 0, 8px 8px;
+  position: relative;
+  z-index: 0;
+}
+</style>
+</head>
+<body class="styleguide">
+  <div class="styleguide-hero">
+    <h1 class="styleguide-title">Styleguide</h1>
+  </div>
+
+  <nav class="styleguide-nav">
+    <ul>
+    {{#components}}
+      <li><a href="#{{anchor name}}">{{name}}</a></li>
+    {{/components}}
+    </ul>
+  </nav>
+
+  {{#components}}
+    <div class="styleguide-section">
+      <h2 id="{{anchor name}}" class="styleguide-heading">{{name}}</h2>
+      {{textblock description}}
+
+      {{#if elements}}
+        <h3 class="styleguide-subheading">Elements</h3>
+        <table class="styleguide-table">
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+          </tr>
+          {{#elements}}
+            <tr>
+              <td><code class="styleguide-code">{{name}}</code></td>
+              <td>{{description}}</td>
+            </tr>
+          {{/elements}}
+        </table>
+      {{/if}}
+
+      {{#if modifiers}}
+        <h3 class="styleguide-subheading">Modifiers</h3>
+        <table class="styleguide-table">
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+          </tr>
+          {{#modifiers}}
+            <tr>
+              <td><code class="styleguide-code">{{name}}</code></td>
+              <td>{{description}}</td>
+            </tr>
+          {{/modifiers}}
+        </table>
+      {{/if}}
+
+      {{#if examples}}
+        <h3 class="styleguide-subheading">Examples</h3>
+        {{#examples}}
+          {{#if name}}<h4 class="styleguide-subsubheading">{{name}}</h4>{{/if}}
+
+          {{textblock description}}
+
+          <div class="styleguide-example">
+            <pre class="styleguide-example__code styleguide-code">
+              <code>{{code}}</code>
+            </pre>
+            <div class="styleguide-example__preview">
+              {{{code}}}
+            </div>
+          </div>
+        {{/examples}}
+        </table>
+      {{/if}}
+
+    </div>
+  {{/components}}
+</body>
+</html>
