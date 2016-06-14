@@ -67,7 +67,7 @@ stylescribe example.css
 
 By default, stylescribe will create a `build.html` file in the current directory. If you'd like to specify a different output path you can use the `--output` option:
 ```
-stylescribe example.css --output=path/to/my-styleguide.html
+stylescribe example.css --output path/to/my-styleguide.html
 ```
 
 ### Multiple source files
