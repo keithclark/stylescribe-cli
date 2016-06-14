@@ -5,37 +5,39 @@
 var optimist = require('optimist');
 var cli = require('../lib/cli.js');
 
-optimist.usage('Create CSS documentation.\nUsage: $0 [cssfile|directory]... [OPTIONS]', {
+optimist.usage('Usage: $0 [cssfile]... [OPTIONS]', {
     'o': {
         'type': 'string',
-        'description': 'Output File',
+        'description': 'Path the output file (default `build.html`)',
         'alias': 'output',
     },
     't': {
         'type': 'string',
-        'description': 'Template File',
+        'description': 'Path a custom template file',
         'alias': 'template'
-    },
-    'v': {
-        'type': 'boolean',
-        'description': 'Prints the current compiler version',
-        'alias': 'version'
     },
     'w': {
         'type': 'boolean',
         'description': 'Watch source and template files for changes and automatically rebuild',
         'alias': 'watch'
     },
+    'v': {
+        'type': 'boolean',
+        'description': 'Show the stylescribe version information',
+        'alias': 'version'
+    },
     'h': {
         'type': 'boolean',
-        'description': 'Outputs this message',
+        'description': 'Show this message',
         'alias': 'help'
     }
 }).wrap(120);
 
 var argv = optimist.argv;
 
-if (argv.h || argv.help || argv._.length === 0) {
+if (argv.v || argv.version) {
+    cli.reportVerson();
+} else if (argv.h || argv.help || argv._.length === 0) {
     optimist.showHelp();
 } else {
     cli.run({
