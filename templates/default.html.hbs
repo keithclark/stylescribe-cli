@@ -23,7 +23,7 @@
   bottom: 0;
   width: 16em;
   overflow: auto;
-  background: #655;
+  background: #3E606F;
   padding: 2em;
 }
 .styleguide-nav ul {
@@ -46,14 +46,16 @@
 /* headings
 ------------------------- */
 .styleguide-title {
-  font-size: 350%;
+  font-weight: normal;
+  font-size: 375%;
   line-height: 1.2;
   margin: 0 0 0.75em 0;
+  color: #193441
 }
 .styleguide-heading {
   font-weight: normal;
   font-size: 300%;
-  color: #888;
+  color: #91AA9D;
   margin: 3em 0 0.75em 0;
 }
 .styleguide-subheading {
@@ -63,7 +65,7 @@
 .styleguide-subsubheading {
   font-size: 100%;
   margin: 1.5em 0 .5em 0;
-  color: #888;
+  color: #91AA9D;
 }
 
 
@@ -72,12 +74,22 @@
 .styleguide-code {
   font: .8rem / 1.5 Menlo;
   white-space: pre;
-  background: #eee;
+  background: #F8F6F1;
   padding: 0.25em;
   border-radius: 2px;
   color: #444;
-  box-shadow: 0 0 0 1px #ddd;
+  box-shadow: 0 0 0 1px #E6E3E0;
 }
+.styleguide-code__tag {
+  color: #a45
+}
+.styleguide-code__attrname {
+  color: #6a3
+}
+.styleguide-code__attrvalue {
+  color: #37b
+}
+
 .styleguide-code code {
   font: inherit;
 }
@@ -93,10 +105,10 @@
 .styleguide-table th {
   text-align: left;
   padding: 0.25em 0;
-  color: #888;
+  color: #91AA9D;
 }
 .styleguide-table td {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #E6E3E0;
   padding: 0.25em 0;
 }
 .styleguide-table td:first-child:nth-last-child(2) {
@@ -111,20 +123,20 @@
   margin-left: -2em;
 }
 .styleguide-example > * {
-  box-shadow: 0 0 0 1px #ddd;
+  box-shadow: 0 0 0 1px #E6E3E0;
   margin: 0 0 0 2em;
   padding: 1em;
   border-radius: 2px
 }
 .styleguide-example__code {
-  flex: 0.6;
+  flex: 1.5;
   order: 1;
   overflow: auto;
 }
 .styleguide-example__preview {
-  flex: 0.4;
-  background-image: linear-gradient(45deg, #eee 25%, transparent 25%, transparent 75%, #eee 75%, #eee 100%),
-                    linear-gradient(45deg, #eee 25%, transparent 25%, transparent 75%, #eee 75%, #eee 100%);
+  flex: 1;
+  background-image: linear-gradient(45deg, #F8F6F1 25%, transparent 25%, transparent 75%, #F8F6F1 75%, #F8F6F1 100%),
+                    linear-gradient(45deg, #F8F6F1 25%, transparent 25%, transparent 75%, #F8F6F1 75%, #F8F6F1 100%);
   background-size: 16px 16px;
   background-position: 0 0, 8px 8px;
   position: relative;
@@ -146,8 +158,8 @@
   </nav>
 
   {{#components}}
-    <div class="styleguide-section">
-      <h2 id="{{anchor name}}" class="styleguide-heading">{{name}}</h2>
+    <div class="styleguide-section" id="{{anchor name}}">
+      <h2 class="styleguide-heading">{{name}}</h2>
       {{textblock description}}
 
       {{#if elements}}
@@ -203,5 +215,8 @@
 
     </div>
   {{/components}}
+<script>
+!function(){function b(a){return"<span class=styleguide-code__"+a+">"}function c(){return"</span>"}function d(a,d){return b(a)+d+c()}function e(e){var f=!1,g=!1;return e.replace(a,function(a,e,h,i){return"!--"!=e||g?e&&!g?(f=!0,a=b("!"==e[0]?"dtd":"tag")+a):"&gt;"!=a||g?"--&gt;"==a&&g?(g=!1,a+=c()):h&&i&&f&&(a=d("attrname",h)+d("attrvalue",i)):(f=!1,a+=c()):(g=!0,a=b("comment")+a),a})}for(var a=/&lt;(?:(\/?[a-z-:0-9]+|!doctype|!--)?)|(?:--)?&gt;|([a-z0-9-:]+=)(("[^"]*")|('[^']*'))/gi,f=document.querySelectorAll("code"),g=0;g<f.length;g++){var h=f[g];h.innerHTML=e(h.innerHTML)}}();
+</script>
 </body>
 </html>
