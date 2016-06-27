@@ -4,6 +4,10 @@
 
 CSS authors annotate their stylesheets using simple markdown-style comments which Stylescribe uses to produce a HTML document containing implementation details, code samples and accompanying previews.
 
+Here's an example of the document created by Stylescribe, using the default template:
+
+![Example Stylescribe output](https://dl.dropboxusercontent.com/u/1727419/assets/stylescribe.jpg)
+
 ## Stylescribe is useful for..
 
 * Documenting how to build interfaces in teams with varying levels of CSS knowledge.
