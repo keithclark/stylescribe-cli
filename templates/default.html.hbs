@@ -89,7 +89,10 @@
 .styleguide-code__attrvalue {
   color: #37b
 }
-
+.styleguide-code__comment {
+  color: #89a;
+  font-style: italic;
+}
 .styleguide-code code {
   font: inherit;
 }
@@ -109,7 +112,12 @@
 }
 .styleguide-table td {
   border-top: 1px solid #E6E3E0;
-  padding: 0.25em 0;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  vertical-align: top;
+}
+.styleguide-table td:not(:last-child) {
+  padding-right: 1em;
 }
 .styleguide-table td:first-child:nth-last-child(2) {
   width: 25%;
